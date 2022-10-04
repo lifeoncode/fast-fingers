@@ -1,42 +1,8 @@
+// import all the classes needed
+import { UI } from './app.js';
+import { Count } from './app.js';
 
-// fetch words from web
-class Words {
-    getWords = async () => {
-        const response = await fetch('https://raw.githubusercontent.com/lifeoncode/data-thingie/main/words.txt');
-        const data = await response.text();
-        return data;
-    }
-}
-
-
-class UI {
-    constructor() {
-        this.container = document.querySelector('.current-words');
-    }
-
-    // display words
-    displayWords = () => {
-        const words = new Words();
-        words.getWords().then(theWords => {
-            this.container.textContent = theWords;
-        });
-    }
-}
-
-class Count {
-    constructor() {
-        this.count = 0;
-    }
-    
-    increment = () => {
-        this.count++;
-    }
-
-    getCount = () => {
-        return this.count;
-    }
-}
-
+ 
 // on load
 window.onload = () => {
     // display the words
@@ -44,17 +10,25 @@ window.onload = () => {
     ui.displayWords();
 
     // listen for keypress
-    this.addEventListener('keypress', matchKeys);
+    window.addEventListener('keypress', matchKeys);
 }
 
+
 // match keys entered with words on page
-function matchKeys(e) {
+let count = new Count();
+const matchKeys = (e) =>  {
     // instatiate needed classes
-    let count = new Count();
     const ui = new UI();
 
     // words - current letter and entered key
     const currentWords = ui.container.textContent; 
+
+    // individual letters for styling
+    const letters = currentWords.split('');
+    for (let i of letters) {
+        ui.createElement('span', i);
+    }
+    
     let currentLetter = currentWords[count.getCount()];
     let enteredLetter = e.key;
     // increment the count by 1 with every keypress

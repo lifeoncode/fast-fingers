@@ -5,14 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 50px;
+        }
+
+        .current-words {
+            font-size: 25px;
+            line-height: 1.5;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <div class="current-words"></div>
-        <!-- <form>
-            <input type="text" placeholder="type word...">
-        </form> -->
+        <span class="current-words"></span>
     </div>
-    <script src="./js/index.js" defer></script>
+
+    
+    <script type="module" src="./js/app.js" defer></script>
+    <script type="module" src="./js/index.js" defer></script>
 </body>
 </html>
