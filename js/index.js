@@ -1,62 +1,45 @@
-// import all the classes needed
-import { UI } from './app.js';
-import { Count } from './app.js';
+const text = document.querySelector('#text');
+const enteredKeys = [];
 
- 
-// on load
-window.onload = () => {
-    // display the words
-    const ui = new UI();
-    ui.displayWords();
-
-    window.addEventListener('keypress', gamePlay);
-}
-
-
-// all the logic of the game
-const gamePlay = (e) => {
-    const ui = new UI();
-    const currentWords = ui.container.textContent; 
-    let currentLetter = currentWords[count.getCount()];
-
-    if (matchKeys(e.key)) {
-        console.log('GREAT!');
-        if (e.key === ' ') {
-            document.querySelector('.space').classList.add('correct');
-        } else {
-            document.querySelector(`.${currentLetter}`).classList.add('correct');
-        }
-
-    } else {
-        console.log('OH NO...');
-        if (e.key === ' ') {
-            document.querySelector('.space').classList.add('wrong');
-        } else {
-            document.querySelector(`.${currentLetter}`).classList.add('wrong');
-        }
+const generateText = async () => {
+    const res = await fetch('https://api.chucknorris.io/jokes/random');
+    const data = await res.json();
+    let joke = data.value.split('');
+    
+    text.innerHTML = '';
+    for (let char of joke) {
+        text.innerHTML += `<span>${char}</span>`;
     }
 }
 
 
-// match keys entered with words on page
-let count = new Count();
-const matchKeys = (pressedKey) =>  {
-    // instatiate needed classes
-    const ui = new UI();
+window.addEventListener('load', generateText);
 
-    // words - current letter and entered key
-    const currentWords = ui.container.textContent; 
-    let currentLetter = currentWords[count.getCount()];
-    // increment the count by 1 with every keypress
-    count.increment();
 
-    // the matching logic
-    if (pressedKey === currentLetter) {
-        return true;
-    } else {
-        return false;
+window.addEventListener('keypress', (e) => {
+    enteredKeys.push(e.key);
+    let textSpans = text.querySelectorAll('span');
+
+    textSpans.forEach((char, index) => {
+        let charEntered = enteredKeys[index];
+        if (charEntered == null) {
+            char.className = '';
+
+        }else if (charEntered === char.innerText) {
+            char.classList.add('correct');
+            char.classList.remove('wrong');
+
+        } else {
+            char.classList.add('wrong');
+            char.classList.remove('correct');
+        }
+    })
+
+
+    // when the end of a sentence is reached
+    // reset entered keys and generated a new joke
+    if (enteredKeys.length === textSpans.length) {
+        enteredKeys.length = 0;
+        generateText();
     }
-}
-
-
-
+});

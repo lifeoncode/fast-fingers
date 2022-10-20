@@ -1,0 +1,20 @@
+.text {
+    font-size: 20px;
+    line-height: 1.5;
+    font-family: 'roboto condensed', sans-serif;
+    padding: 100px;
+    letter-spacing: 2px;
+}
+
+.text .correct {
+    color: rgb(0, 76, 255);
+}
+
+.text .wrong {
+    color: orangered;
+    border-bottom: 1px solid orangered;
+}
+
+
+
+
