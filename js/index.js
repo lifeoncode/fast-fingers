@@ -15,8 +15,9 @@ const generateText = async () => {
 
 window.addEventListener('load', generateText);
 
-
+const sound = document.querySelector('audio');
 window.addEventListener('keypress', (e) => {
+    sound.play();
     enteredKeys.push(e.key);
     let textSpans = text.querySelectorAll('span');
 
