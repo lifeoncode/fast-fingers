@@ -62,7 +62,12 @@ header {
   .timer {
     border-radius: 30px;
     padding: 4px 6px;
-    border: 1px solid $black;
+    background-color: $black;
+    color: $beige-white;
+
+    i {
+      margin-right: 5px;
+    }
   }
 
   .score {
@@ -71,7 +76,7 @@ header {
       display: inline-block;
       padding: 4px 10px;
       line-height: 1;
-      color: #fff;
+      color: $beige-white;
 
       i {
         margin-right: 5px;

@@ -45,14 +45,18 @@ header {
 .stats .timer {
   border-radius: 30px;
   padding: 4px 6px;
-  border: 1px solid #242424;
+  background-color: #242424;
+  color: rgb(255, 248, 243);
+}
+.stats .timer i {
+  margin-right: 5px;
 }
 .stats .score span {
   border-radius: 30px;
   display: inline-block;
   padding: 4px 10px;
   line-height: 1;
-  color: #fff;
+  color: rgb(255, 248, 243);
 }
 .stats .score span i {
   margin-right: 5px;
