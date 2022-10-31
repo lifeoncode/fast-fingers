@@ -1,45 +1,32 @@
-const text = document.querySelector("#text");
-const enteredKeys = [];
+import { UI } from "./app.js";
+import { Gameplay } from "./app.js";
 
-const generateText = async () => {
-  const res = await fetch("https://api.chucknorris.io/jokes/random");
-  const data = await res.json();
-  let joke = data.value.split("");
-
-  text.innerHTML = "";
-  for (let char of joke) {
-    text.innerHTML += `<span>${char}</span>`;
+class App {
+  constructor() {
+    this.ui = new UI();
+    this.gameplay = new Gameplay();
+    this.sound = document.querySelector("audio");
+    this.enteredKeys = [];
   }
-};
 
-window.addEventListener("load", generateText);
+  events = () => {
+    this.ui.generateText();
+    window.addEventListener("keypress", (e) => {
+      // play key sound
+      this.sound.play();
+      // update entered keys to compare with text
+      this.enteredKeys.push(e.key);
+      let textSpans = text.querySelectorAll("span");
+      //  handle inputs - when sentence completes
+      //  generate new text
+      const gameplay = new Gameplay();
+      let done = gameplay.handleInputLogic(this.enteredKeys, textSpans);
+      if (done) this.ui.generateText();
+    });
+  };
+}
 
-const sound = document.querySelector("audio");
-window.addEventListener("keypress", (e) => {
-  sound.play();
-});
-
-window.addEventListener("keypress", (e) => {
-  enteredKeys.push(e.key);
-  let textSpans = text.querySelectorAll("span");
-
-  textSpans.forEach((char, index) => {
-    let charEntered = enteredKeys[index];
-    if (charEntered == null) {
-      char.className = "";
-    } else if (charEntered === char.innerText) {
-      char.classList.add("correct");
-      char.classList.remove("wrong");
-    } else {
-      char.classList.add("wrong");
-      char.classList.remove("correct");
-    }
-  });
-
-  // when the end of a sentence is reached
-  // reset entered keys and generated a new joke
-  if (enteredKeys.length === textSpans.length) {
-    enteredKeys.length = 0;
-    generateText();
-  }
+window.addEventListener("load", () => {
+  const app = new App();
+  app.events();
 });
