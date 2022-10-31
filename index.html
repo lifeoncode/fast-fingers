@@ -4,12 +4,33 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./icon.svg" />
     <link rel="stylesheet" href="./css/style.css" />
     <title>Fast fingers | a typing speed thingie</title>
   </head>
-  <body>
+  <body class="light">
     <audio src="./typewriter-short.wav" hidden></audio>
-    <main class="text" id="text"></main>
+    <header>
+      <div class="container">
+        <span></span>
+
+        <nav>
+          <div class="theme-toggle">
+            <span class="toggle-btn"></span>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <section class="stats" id="stats">
+      <div class="container">
+        <div class="score" id="score"></div>
+      </div>
+    </section>
+
+    <section class="container">
+      <div id="text" class="text"></div>
+    </section>
 
     <script type="module" src="./js/index.js" defer></script>
     <script type="module" src="./js/app.js" defer></script>

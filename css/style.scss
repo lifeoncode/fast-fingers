@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Roboto:ital,wght@0,500;0,700;0,900;1,500;1,700;1,900&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -10,6 +11,19 @@
   display: none;
 }
 
+@mixin grid($columns: 1fr, $gap: 20px) {
+  display: grid;
+  grid-template-columns: $columns;
+  grid-gap: $gap;
+}
+
+@mixin flex($align: center, $justify: center, $direction: row) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+  flex-direction: $direction;
+}
+
 .container {
   max-width: 1000px;
   margin: 0 auto;
@@ -18,12 +32,14 @@
 .text {
   font-size: 18px;
   line-height: 1.4;
+
+  .correct {
+    color: cyan;
+    text-decoration: none;
+  }
+
+  .wrong {
+    color: orangered;
+    text-decoration: underline;
+  }
 }
-.text .correct {
-  color: cyan;
-  text-decoration: none;
-}
-.text .wrong {
-  color: orangered;
-  text-decoration: underline;
-}/*# sourceMappingURL=style.css.map */
