@@ -11,6 +11,12 @@
   display: none;
 }
 
+$beige-white: rgb(255, 248, 243);
+$white: #fafafa;
+$black: #242424;
+$red: rgb(254, 64, 12);
+$green: rgb(0, 182, 134);
+
 @mixin grid($columns: 1fr, $gap: 20px) {
   display: grid;
   grid-template-columns: $columns;
@@ -24,22 +30,82 @@
   flex-direction: $direction;
 }
 
+body {
+  background-color: $beige-white;
+}
+
 .container {
-  max-width: 1000px;
+  max-width: 700px;
   margin: 0 auto;
+
+  @media only screen and (max-width: 720px) {
+    max-width: 96%;
+  }
+}
+
+header {
+  padding: 20px 0;
+}
+
+.stats {
+  margin: 50px 0 100px 0;
+  font-size: 18px;
+  color: $black;
+
+  .container {
+    padding: 10px 20px;
+    border-radius: 50px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.193);
+    @include flex($justify: space-between);
+  }
+
+  .timer {
+    border-radius: 30px;
+    padding: 4px 6px;
+    border: 1px solid $black;
+  }
+
+  .score {
+    span {
+      border-radius: 30px;
+      display: inline-block;
+      padding: 4px 10px;
+      line-height: 1;
+      color: #fff;
+
+      i {
+        margin-right: 5px;
+      }
+
+      &:nth-of-type(1) {
+        margin-right: 20px;
+        background-color: $green;
+      }
+
+      &:nth-of-type(2) {
+        background-color: $red;
+      }
+    }
+  }
 }
 
 .text {
-  font-size: 18px;
-  line-height: 1.4;
+  font-size: 20px;
+  line-height: 1.5;
+  color: $black;
+  padding: 20px;
+
+  @media only screen and (max-width: 720px) {
+    padding: 20px 10px;
+  }
 
   .correct {
-    color: cyan;
+    color: $green;
     text-decoration: none;
   }
 
   .wrong {
-    color: orangered;
+    color: $red;
     text-decoration: underline;
   }
 }

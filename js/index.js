@@ -1,6 +1,41 @@
-import { UI } from "./app.js";
-import { Gameplay } from "./app.js";
-import { Statistics } from "./app.js";
+import { UI, Gameplay, Statistics } from "./app.js";
+
+let timerRunning = false;
+let timerContainer = document.querySelector("#timer");
+let min = 0;
+let sec = 0;
+
+setInterval(() => {
+  if (timerRunning) {
+    countTimer();
+  }
+}, 1000);
+
+function countTimer() {
+  sec++;
+  if (sec === 60) {
+    min++;
+    sec = 0;
+  }
+
+  if (sec < 10 && min < 10) {
+    timerContainer.innerHTML = `
+      <i class="fa-solid fa-clock"></i>
+      <span>0${min}:0${sec}</span>`;
+  } else if (sec >= 10 && min < 10) {
+    timerContainer.innerHTML = `
+      <i class="fa-solid fa-clock"></i>
+      <span>0${min}:${sec}</span>`;
+  } else if (sec >= 10 && min >= 10) {
+    timerContainer.innerHTML = `
+      <i class="fa-solid fa-clock"></i>
+      <span>${min}:${sec}</span>`;
+  } else if (sec < 10 && min >= 10) {
+    timerContainer.innerHTML = `
+      <i class="fa-solid fa-clock"></i>
+      <span>${min}:0${sec}</span>`;
+  }
+}
 
 class App {
   constructor() {
@@ -12,6 +47,8 @@ class App {
 
   events = () => {
     window.addEventListener("keypress", (e) => {
+      // start timer
+      timerRunning = true;
       // play key sound
       this.ui.playKeySound();
       // update entered keys to compare with text
