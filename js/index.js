@@ -65,6 +65,10 @@ class App {
 
 // start
 window.addEventListener("load", () => {
+  // seed score data
+  let stats = { score: [0, 0] };
+  localStorage.setItem("fastfingers-stats", JSON.stringify(stats));
+
   // instantiate App
   const app = new App();
   app.events();

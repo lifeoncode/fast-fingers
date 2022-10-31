@@ -101,14 +101,8 @@ export class Statistics {
   };
 
   getStats = () => {
-    if (!this.statsFound()) {
-      let stats = { score: [this.correctCount, this.wrongCount] };
-      localStorage.setItem("fastfingers-stats", JSON.stringify(stats));
-      return JSON.parse(localStorage.getItem("fastfingers-stats"));
-    } else {
-      let stats = JSON.parse(localStorage.getItem("fastfingers-stats"));
-      return stats;
-    }
+    let stats = JSON.parse(localStorage.getItem("fastfingers-stats"));
+    return stats;
   };
 
   saveScore = () => {
