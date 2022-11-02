@@ -11,7 +11,14 @@
 }
 
 body {
+  transition: all 0.5s ease;
+  color: rgb(255, 248, 243);
+}
+body.light {
   background-color: rgb(255, 248, 243);
+}
+body.dark {
+  background-color: #242424;
 }
 
 .container {
@@ -27,14 +34,63 @@ body {
 header {
   padding: 20px 0;
 }
-
+header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+}
+header nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  font-size: 18px;
+  color: #242424;
+}
+header nav .toggle-btn {
+  border-radius: 50%;
+}
+header nav .theme-toggle {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 2px;
+  width: 50px;
+  height: 25px;
+  border-radius: 30px;
+  background-color: #242424;
+  margin-right: 30px;
+  position: relative;
+  transition: all 0.5s ease;
+}
+header nav .theme-toggle.dark {
+  background-color: rgb(255, 248, 243);
+}
+header nav .theme-toggle .toggle-btn {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  height: 20px;
+  width: 20px;
+  background-color: rgb(255, 248, 243);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  transition: all 0.5s ease;
+}
+header nav .theme-toggle .toggle-btn.dark {
+  margin-left: 26px;
+  background-color: #242424;
+  color: #fafafa;
+}
 .stats {
   margin: 50px 0 100px 0;
   font-size: 18px;
   color: #242424;
 }
 .stats .container {
-  padding: 10px 20px;
+  padding: 10px;
   border-radius: 50px;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.193);
   display: flex;

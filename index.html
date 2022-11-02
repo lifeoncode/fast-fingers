@@ -12,6 +12,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet" />
     <link rel="stylesheet" href="./css/style.css" />
     <title>Fast fingers | a typing speed thingie</title>
   </head>
@@ -19,11 +20,16 @@
     <audio src="./typewriter-short.wav" hidden></audio>
     <header>
       <div class="container">
-        <span></span>
+        <span>fast fingers</span>
 
         <nav>
-          <div class="theme-toggle">
-            <span class="toggle-btn"></span>
+          <!-- theme toggle -->
+          <div class="theme-toggle" id="theme-toggle">
+            <span class="toggle-btn"><i class="lni lni-sun"></i></span>
+          </div>
+          <!-- settings toggle -->
+          <div class="settings-toggle">
+            <span class="toggle-btn"><i class="fa-solid fa-gear"></i></span>
           </div>
         </nav>
       </div>

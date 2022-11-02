@@ -4,6 +4,9 @@ export class UI {
     this.textContainer = document.querySelector("#text");
     this.scoreContainer = document.querySelector("#score");
     this.sound = document.querySelector("audio");
+    this.body = document.body;
+    this.themeToggle = document.querySelector("#theme-toggle");
+    this.themeBtn = this.themeToggle.querySelector(".toggle-btn");
     this.stats = new Statistics();
   }
 
@@ -41,6 +44,21 @@ export class UI {
       console.log(err);
     }
   };
+
+  // theme
+  lightTheme() {
+    this.body.className = "light";
+    this.themeToggle.className = "theme-toggle";
+    this.themeBtn.className = "toggle-btn";
+    this.themeBtn.innerHTML = '<i class="lni lni-sun"></i>';
+  }
+
+  darkTheme() {
+    this.body.className = "dark";
+    this.themeToggle.className = "theme-toggle dark";
+    this.themeBtn.className = "toggle-btn dark";
+    this.themeBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
+  }
 }
 
 // game logic

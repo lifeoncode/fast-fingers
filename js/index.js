@@ -77,4 +77,16 @@ window.addEventListener("load", () => {
   const ui = new UI();
   ui.generateText();
   ui.updateScore();
+
+  // theme
+  let dark = false;
+  ui.themeToggle.addEventListener("click", () => {
+    if (!dark) {
+      dark = true;
+      ui.darkTheme();
+    } else {
+      dark = false;
+      ui.lightTheme();
+    }
+  });
 });
