@@ -207,6 +207,7 @@ header nav .theme-toggle .toggle-btn.dark {
   line-height: 1.6;
   color: #242424;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.086);
+  margin-bottom: 20px;
 }
 .settings-section .difficulty .level-info i {
   display: inline-block;

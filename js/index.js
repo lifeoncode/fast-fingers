@@ -2,41 +2,44 @@ import { UI, Gameplay, Statistics } from "./app.js";
 import { Settings } from "./settings.js";
 
 let timerRunning = false;
-let timerContainer = document.querySelector("#timer");
+let timerContainer = document.querySelector("#time");
 let min = 0;
 let sec = 0;
 
-setInterval(() => {
-  if (timerRunning) {
-    countTimer();
-  }
-}, 1000);
-
-function countTimer() {
-  sec++;
-  if (sec === 60) {
-    min++;
-    sec = 0;
-  }
-
+const setTimer = () => {
   if (sec < 10 && min < 10) {
-    timerContainer.innerHTML = `
-      <i class="fa-solid fa-clock"></i>
-      <span>0${min}:0${sec}</span>`;
+    timerContainer.innerHTML = `<span>0${min}:0${sec}</span>`;
   } else if (sec >= 10 && min < 10) {
-    timerContainer.innerHTML = `
-      <i class="fa-solid fa-clock"></i>
-      <span>0${min}:${sec}</span>`;
+    timerContainer.innerHTML = `<span>0${min}:${sec}</span>`;
   } else if (sec >= 10 && min >= 10) {
-    timerContainer.innerHTML = `
-      <i class="fa-solid fa-clock"></i>
-      <span>${min}:${sec}</span>`;
+    timerContainer.innerHTML = `<span>${min}:${sec}</span>`;
   } else if (sec < 10 && min >= 10) {
-    timerContainer.innerHTML = `
-      <i class="fa-solid fa-clock"></i>
-      <span>${min}:0${sec}</span>`;
+    timerContainer.innerHTML = `<span>${min}:0${sec}</span>`;
   }
-}
+};
+
+const checkLevel = () => {
+  let level = JSON.parse(localStorage.getItem("difficulty-level"));
+  switch (level) {
+    case "newbie":
+      min = 6;
+      sec = 0;
+      break;
+    case "casual":
+      min = 4;
+      sec = 0;
+      break;
+    case "pro":
+      min = 2;
+      sec = 30;
+      break;
+    case "legend":
+      min = 1;
+      sec = 0;
+  }
+
+  setTimer();
+};
 
 class App {
   constructor() {
@@ -69,6 +72,11 @@ window.addEventListener("load", () => {
   // seed score data
   let stats = { score: [0, 0] };
   localStorage.setItem("fastfingers-stats", JSON.stringify(stats));
+
+  // seed timer based on settings
+  setTimeout(() => {
+    checkLevel();
+  }, 200);
 
   // get settings
   const settings = new Settings();
@@ -109,6 +117,7 @@ window.addEventListener("load", () => {
       }
       e.target.className = "active";
       localStorage.setItem("difficulty-level", JSON.stringify(e.target.id));
+      checkLevel();
       settings.handleControls(e.target);
     });
   });
