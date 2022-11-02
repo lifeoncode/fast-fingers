@@ -12,13 +12,42 @@
 
 body {
   transition: all 0.5s ease;
-  color: rgb(255, 248, 243);
 }
 body.light {
   background-color: rgb(255, 248, 243);
 }
+body.light .logo {
+  color: #242424;
+}
+body.light .settings-toggle {
+  color: #242424;
+}
+body.light .text {
+  color: #242424;
+}
+body.light .timer {
+  color: #242424;
+}
+body.light .score {
+  color: rgb(255, 248, 243);
+}
 body.dark {
-  background-color: #242424;
+  background-color: #0f1720;
+}
+body.dark .logo {
+  color: rgb(255, 248, 243);
+}
+body.dark .settings-toggle {
+  color: rgb(255, 248, 243);
+}
+body.dark .text {
+  color: rgb(255, 248, 243);
+}
+body.dark .timer {
+  color: rgb(255, 248, 243);
+}
+body.dark .score {
+  color: rgb(255, 248, 243);
 }
 
 .container {
@@ -50,6 +79,7 @@ header nav {
 }
 header nav .toggle-btn {
   border-radius: 50%;
+  cursor: pointer;
 }
 header nav .theme-toggle {
   cursor: pointer;
@@ -87,7 +117,6 @@ header nav .theme-toggle .toggle-btn.dark {
 .stats {
   margin: 50px 0 100px 0;
   font-size: 18px;
-  color: #242424;
 }
 .stats .container {
   padding: 10px;
@@ -101,8 +130,6 @@ header nav .theme-toggle .toggle-btn.dark {
 .stats .timer {
   border-radius: 30px;
   padding: 4px 6px;
-  background-color: #242424;
-  color: rgb(255, 248, 243);
 }
 .stats .timer i {
   margin-right: 5px;
@@ -112,7 +139,6 @@ header nav .theme-toggle .toggle-btn.dark {
   display: inline-block;
   padding: 4px 10px;
   line-height: 1;
-  color: rgb(255, 248, 243);
 }
 .stats .score span i {
   margin-right: 5px;
@@ -128,7 +154,6 @@ header nav .theme-toggle .toggle-btn.dark {
 .text {
   font-size: 20px;
   line-height: 1.5;
-  color: #242424;
   padding: 20px;
 }
 @media only screen and (max-width: 720px) {
