@@ -6,6 +6,31 @@ let timerContainer = document.querySelector("#time");
 let min = 0;
 let sec = 0;
 
+const countDown = () => {
+  if (sec === 16 && min === 0) {
+    document.querySelector("#timer").className = "timer danger";
+  }
+
+  if (sec > 0) {
+    sec--;
+  } else if (sec === 0 && min === 0) {
+    alert("GAME OVER!!");
+    timerRunning = false;
+  } else if (sec === 0 && min > 0) {
+    min--;
+    sec = 59;
+  }
+
+  setTimer();
+};
+
+// countdown timer
+setInterval(() => {
+  if (timerRunning) {
+    countDown();
+  }
+}, 1000);
+
 const setTimer = () => {
   if (sec < 10 && min < 10) {
     timerContainer.innerHTML = `<span>0${min}:0${sec}</span>`;

@@ -109,11 +109,14 @@ header {
   }
 
   // user stats
-
   .timer {
     border-radius: 30px;
     padding: 4px 6px;
     margin-right: 50px;
+
+    &.danger {
+      color: $red;
+    }
 
     i {
       margin-right: 5px;

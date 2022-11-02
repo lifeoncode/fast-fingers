@@ -76,6 +76,9 @@ header .timer {
   padding: 4px 6px;
   margin-right: 50px;
 }
+header .timer.danger {
+  color: rgb(254, 64, 12);
+}
 header .timer i {
   margin-right: 5px;
 }
