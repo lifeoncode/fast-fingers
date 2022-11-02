@@ -33,14 +33,12 @@ $green: rgb(0, 182, 134);
 
 body {
   transition: all 0.5s ease;
+  height: 100vh;
+  overflow: hidden;
 
   &.light {
     background-color: $beige-white;
 
-    // logo
-    .logo {
-      color: $black;
-    }
     // settings
     .settings-toggle {
       color: $black;
@@ -56,16 +54,18 @@ body {
     // score
     .score {
       color: $beige-white;
+    }
+    // stats shadow
+    header {
+      .container {
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0.376);
+      }
     }
   }
 
   &.dark {
     background-color: $very-dark-slategray;
 
-    // logo
-    .logo {
-      color: $beige-white;
-    }
     // settings
     .settings-toggle {
       color: $beige-white;
@@ -81,6 +81,12 @@ body {
     // score
     .score {
       color: $beige-white;
+    }
+    // stats shadow
+    header {
+      .container {
+        box-shadow: 0 0 1px $beige-white;
+      }
     }
   }
 }
@@ -95,12 +101,48 @@ body {
 }
 
 header {
-  padding: 20px 0;
-
   .container {
+    margin: 30px auto;
+    border-radius: 50px;
+    padding: 10px;
     @include flex($justify: space-between);
   }
 
+  // user stats
+
+  .timer {
+    border-radius: 30px;
+    padding: 4px 6px;
+    margin-right: 50px;
+
+    i {
+      margin-right: 5px;
+    }
+  }
+
+  .score {
+    span {
+      border-radius: 30px;
+      display: inline-block;
+      padding: 4px 8px;
+      line-height: 1;
+
+      i {
+        margin-left: 5px;
+      }
+
+      &:nth-of-type(1) {
+        margin-right: 10px;
+        background-color: $green;
+      }
+
+      &:nth-of-type(2) {
+        background-color: $red;
+      }
+    }
+  }
+
+  // navigation
   nav {
     @include flex();
     font-size: 18px;
@@ -150,65 +192,81 @@ header {
   }
 }
 
-.stats {
-  margin: 50px 0 100px 0;
-  font-size: 18px;
+.text-section {
+  height: 70vh;
+  @include flex();
 
-  .container {
-    padding: 10px;
-    border-radius: 50px;
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.193);
-    @include flex($justify: space-between);
-  }
+  .text {
+    padding: 0 50px;
+    font-size: 20px;
+    line-height: 1.5;
 
-  .timer {
-    border-radius: 30px;
-    padding: 4px 6px;
-
-    i {
-      margin-right: 5px;
+    @media only screen and (max-width: 720px) {
+      padding: 20px 10px;
     }
-  }
 
-  .score {
-    span {
-      border-radius: 30px;
-      display: inline-block;
-      padding: 4px 10px;
-      line-height: 1;
+    .correct {
+      color: $green;
+      text-decoration: none;
+    }
 
-      i {
-        margin-right: 5px;
-      }
-
-      &:nth-of-type(1) {
-        margin-right: 20px;
-        background-color: $green;
-      }
-
-      &:nth-of-type(2) {
-        background-color: $red;
-      }
+    .wrong {
+      color: $red;
+      text-decoration: underline;
     }
   }
 }
 
-.text {
-  font-size: 20px;
-  line-height: 1.5;
-  padding: 20px;
+.settings-section {
+  padding: 50px 0;
 
-  @media only screen and (max-width: 720px) {
-    padding: 20px 10px;
+  h2,
+  h3 {
+    text-transform: uppercase;
+    font-weight: normal;
   }
 
-  .correct {
-    color: $green;
-    text-decoration: none;
-  }
+  .difficulty {
+    &-nav {
+      @include grid(repeat(4, 1fr), 0px);
+      margin: 20px 0;
 
-  .wrong {
-    color: $red;
-    text-decoration: underline;
+      button {
+        border: 0;
+        padding: 10px;
+        font-size: 16px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &.active {
+          background-color: $green;
+          color: $beige-white;
+        }
+
+        &:first-child {
+          border-top-left-radius: 30px;
+          border-bottom-left-radius: 30px;
+        }
+        &:last-child {
+          border-top-right-radius: 30px;
+          border-bottom-right-radius: 30px;
+        }
+      }
+    }
+
+    .level-info {
+      border-radius: 20px;
+      padding: 20px;
+      font-size: 20px;
+      line-height: 1.6;
+      color: $black;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.086);
+
+      i {
+        display: inline-block;
+        margin-bottom: 10px;
+      }
+    }
   }
 }

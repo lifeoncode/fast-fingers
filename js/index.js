@@ -1,4 +1,5 @@
 import { UI, Gameplay, Statistics } from "./app.js";
+import { Settings } from "./settings.js";
 
 let timerRunning = false;
 let timerContainer = document.querySelector("#timer");
@@ -69,6 +70,16 @@ window.addEventListener("load", () => {
   let stats = { score: [0, 0] };
   localStorage.setItem("fastfingers-stats", JSON.stringify(stats));
 
+  // get settings
+  const settings = new Settings();
+  for (let i of settings.levelControls) {
+    if (i.id == JSON.parse(localStorage.getItem("difficulty-level"))) {
+      setTimeout(() => {
+        i.click();
+      }, 200);
+    }
+  }
+
   // instantiate App
   const app = new App();
   app.events();
@@ -88,5 +99,17 @@ window.addEventListener("load", () => {
       dark = false;
       ui.lightTheme();
     }
+  });
+
+  // settings
+  settings.levelControls.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      for (let i of settings.levelControls) {
+        i.className = "";
+      }
+      e.target.className = "active";
+      localStorage.setItem("difficulty-level", JSON.stringify(e.target.id));
+      settings.handleControls(e.target);
+    });
   });
 });

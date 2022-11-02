@@ -38,8 +38,8 @@ export class UI {
     try {
       let stats = this.stats.getStats();
       this.scoreContainer.innerHTML = `
-      <span><i class="fas fa-check"></i> ${stats.score[0]}</span>
-      <span><i class="fas fa-close"></i> ${stats.score[1]}</span>`;
+      <span>${stats.score[0]}<i class="fas fa-check"></i></span>
+      <span>${stats.score[1]}<i class="fas fa-close"></i></span>`;
     } catch (err) {
       console.log(err);
     }

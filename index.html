@@ -20,7 +20,14 @@
     <audio src="./typewriter-short.wav" hidden></audio>
     <header>
       <div class="container">
-        <span class="logo">fast fingers</span>
+        <!-- timer -->
+        <div class="timer" id="timer">
+          <i class="fa-solid fa-clock"></i>
+          <span>00:00</span>
+        </div>
+
+        <!-- score -->
+        <div class="score" id="score"></div>
 
         <nav>
           <!-- theme toggle -->
@@ -35,21 +42,28 @@
       </div>
     </header>
 
-    <section class="stats" id="stats">
-      <div class="container">
-        <div class="timer" id="timer">
-          <i class="fa-solid fa-clock"></i>
-          <span>00:00</span>
-        </div>
-        <div class="score" id="score"></div>
-      </div>
+    <section class="container text-section" style="display: none">
+      <div id="text" class="text"></div>
     </section>
 
-    <section class="container">
-      <div id="text" class="text"></div>
+    <section class="settings-section" id="settings">
+      <div class="container">
+        <!-- difficulty level -->
+        <div class="difficulty">
+          <h2>set difficulty level</h2>
+          <div class="difficulty-nav">
+            <button type="button" id="newbie" class="active">newbie</button>
+            <button type="button" id="casual">casual</button>
+            <button type="button" id="pro">pro</button>
+            <button type="button" id="legend">legendary</button>
+          </div>
+          <div class="level-info"></div>
+        </div>
+      </div>
     </section>
 
     <script type="module" src="./js/index.js" defer></script>
     <script type="module" src="./js/app.js" defer></script>
+    <script type="module" src="./js/settings.js" defer></script>
   </body>
 </html>
