@@ -6,6 +6,8 @@ export class Settings {
     this.settings = document.querySelector("#settings");
     this.levelControls = this.settings.querySelectorAll("button");
     this.saveScoreBtn = this.settings.querySelector(".high-score .toggle");
+    this.soundBtn = this.settings.querySelector(".keysound-toggle .toggle");
+    this.sound = true;
     this.ui = new UI();
   }
 
@@ -37,6 +39,7 @@ export class Settings {
   toggleEvent = () => {
     this.settingsBtn.addEventListener("click", this.displaySettings);
     this.saveScoreBtn.addEventListener("click", this.saveHighScore);
+    this.soundBtn.addEventListener("click", this.toggleSound);
   };
 
   displaySettings = () => {
@@ -83,5 +86,36 @@ export class Settings {
     this.saveScoreBtn.lastElementChild.classList.remove("on");
     this.saveScoreBtn.lastElementChild.innerHTML =
       '<i class="fas fa-close"></i>';
+  };
+
+  // key sounds
+  toggleSound = () => {
+    if (this.sound) {
+      this.sound = false;
+      this.soundBtn.classList.remove("on");
+      this.soundBtn.lastElementChild.classList.remove("on");
+      this.soundBtn.lastElementChild.innerHTML = '<i class="fas fa-close"></i>';
+    } else {
+      this.sound = true;
+      this.soundBtn.classList.add("on");
+      this.soundBtn.lastElementChild.classList.add("on");
+      this.soundBtn.lastElementChild.innerHTML = '<i class="fas fa-check"></i>';
+    }
+    localStorage.setItem("app-sounds", JSON.stringify(this.sound));
+  };
+
+  // check sound
+  checkSound = () => {
+    if (this.sound) {
+      this.ui.sound.removeAttribute("mute");
+      this.soundBtn.classList.add("on");
+      this.soundBtn.lastElementChild.classList.add("on");
+      this.soundBtn.lastElementChild.innerHTML = '<i class="fas fa-check"></i>';
+    } else {
+      this.ui.sound.setAttribute("mute", "");
+      this.soundBtn.classList.remove("on");
+      this.soundBtn.lastElementChild.classList.remove("on");
+      this.soundBtn.lastElementChild.innerHTML = '<i class="fas fa-close"></i>';
+    }
   };
 }

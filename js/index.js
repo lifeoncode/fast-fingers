@@ -83,7 +83,9 @@ class App {
       // start timer
       timerRunning = true;
       // play key sound
-      this.ui.playKeySound();
+      if (!this.ui.sound.hasAttribute("mute")) {
+        this.ui.playKeySound();
+      }
       // update entered keys to compare with text
       this.enteredKeys.push(e.key);
       let textSpans = text.querySelectorAll("span");
@@ -117,6 +119,15 @@ window.addEventListener("load", () => {
       }, 200);
     }
   }
+
+  // key sounds
+  if (JSON.parse(localStorage.getItem("app-sounds")) === false) {
+    settings.sound = false;
+  }
+
+  setInterval(() => {
+    settings.checkSound();
+  }, 500);
 
   // instantiate App
   const app = new App();

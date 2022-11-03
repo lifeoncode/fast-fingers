@@ -350,4 +350,10 @@ header nav .theme-toggle .toggle-btn {
 }
 .settings-section .keysound-toggle {
   margin-top: 30px;
+}
+.settings-section .keysound-toggle .toggle.on {
+  background-color: rgb(0, 182, 134);
+}
+.settings-section .keysound-toggle .toggle-btn.on {
+  margin-left: 34px;
 }/*# sourceMappingURL=style.css.map */
