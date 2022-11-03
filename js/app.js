@@ -38,10 +38,10 @@ export class UI {
 
   updateScore = () => {
     try {
-      let stats = this.stats.getStats();
+      let highScore = this.stats.getHighScore();
       this.scoreContainer.innerHTML = `
-      <span>${stats.score[0]}<i class="fas fa-check"></i></span>
-      <span>${stats.score[1]}<i class="fas fa-close"></i></span>`;
+      <span>${highScore[0]}<i class="fas fa-check"></i></span>
+      <span>${highScore[1]}<i class="fas fa-close"></i></span>`;
     } catch (err) {
       console.log(err);
     }
@@ -113,19 +113,16 @@ export class Statistics {
     this.saveScore();
   };
 
-  statsFound = () => {
-    if (localStorage.getItem("fastfingers-stats") === null) return false;
-    return true;
-  };
-
-  getStats = () => {
-    let stats = JSON.parse(localStorage.getItem("fastfingers-stats"));
-    return stats;
+  getHighScore = () => {
+    let highScore = JSON.parse(localStorage.getItem("app-high-score"));
+    return highScore;
   };
 
   saveScore = () => {
-    let stats = this.getStats();
-    stats.score = [this.correctCount, this.wrongCount];
-    localStorage.setItem("fastfingers-stats", JSON.stringify(stats));
+    let highScore = this.getHighScore();
+    if (this.correctCount > highScore[0]) {
+      let newHighScore = [this.correctCount, this.wrongCount];
+      localStorage.setItem("app-high-score", JSON.stringify(newHighScore));
+    }
   };
 }

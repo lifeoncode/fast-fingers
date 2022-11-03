@@ -101,8 +101,9 @@ class App {
 // start
 window.addEventListener("load", () => {
   // seed score data
-  let stats = { score: [0, 0] };
-  localStorage.setItem("fastfingers-stats", JSON.stringify(stats));
+  if (JSON.parse(localStorage.getItem("app-high-score")) === null) {
+    localStorage.setItem("app-high-score", JSON.stringify([0, 0]));
+  }
 
   // seed timer based on settings
   setTimeout(() => {
@@ -125,9 +126,15 @@ window.addEventListener("load", () => {
     settings.sound = false;
   }
 
+  // saved score
+  if (JSON.parse(localStorage.getItem("app-score")) === true) {
+    settings.saveScore = true;
+  }
+
   setInterval(() => {
     settings.checkSound();
-  }, 500);
+    settings.checkSaveScore();
+  }, 200);
 
   // instantiate App
   const app = new App();

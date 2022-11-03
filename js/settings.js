@@ -8,6 +8,7 @@ export class Settings {
     this.saveScoreBtn = this.settings.querySelector(".high-score .toggle");
     this.soundBtn = this.settings.querySelector(".keysound-toggle .toggle");
     this.sound = true;
+    this.saveScore = false;
     this.ui = new UI();
   }
 
@@ -38,7 +39,7 @@ export class Settings {
 
   toggleEvent = () => {
     this.settingsBtn.addEventListener("click", this.displaySettings);
-    this.saveScoreBtn.addEventListener("click", this.saveHighScore);
+    this.saveScoreBtn.addEventListener("click", this.toggleSaveScore);
     this.soundBtn.addEventListener("click", this.toggleSound);
   };
 
@@ -69,23 +70,39 @@ export class Settings {
   };
 
   // save high score
-  saveHighScore = () => {
-    this.saveScoreBtn.removeEventListener("click", this.saveHighScore);
-    this.saveScoreBtn.addEventListener("click", this.unsaveHighScore);
-    this.saveScoreBtn.classList.add("on");
-    this.saveScoreBtn.lastElementChild.classList.add("on");
-    this.saveScoreBtn.lastElementChild.innerHTML =
-      '<i class="fas fa-check"></i>';
+  toggleSaveScore = () => {
+    if (this.saveScore) {
+      this.saveScore = false;
+    } else {
+      this.saveScore = true;
+    }
+    localStorage.setItem("app-score", JSON.stringify(this.saveScore));
   };
 
-  // unsave high score
-  unsaveHighScore = () => {
-    this.saveScoreBtn.removeEventListener("click", this.unsaveHighScore);
-    this.saveScoreBtn.addEventListener("click", this.saveHighScore);
-    this.saveScoreBtn.classList.remove("on");
-    this.saveScoreBtn.lastElementChild.classList.remove("on");
-    this.saveScoreBtn.lastElementChild.innerHTML =
-      '<i class="fas fa-close"></i>';
+  checkSaveScore = () => {
+    if (this.saveScore) {
+      this.getSavedScore();
+      this.saveScoreBtn.classList.add("on");
+      this.saveScoreBtn.lastElementChild.classList.add("on");
+      this.saveScoreBtn.lastElementChild.innerHTML =
+        '<i class="fas fa-check"></i>';
+    } else {
+      this.saveScoreBtn.removeEventListener("click", this.unsaveHighScore);
+      this.saveScoreBtn.addEventListener("click", this.saveHighScore);
+      this.saveScoreBtn.classList.remove("on");
+      this.saveScoreBtn.lastElementChild.classList.remove("on");
+      this.saveScoreBtn.lastElementChild.innerHTML =
+        '<i class="fas fa-close"></i>';
+    }
+  };
+
+  getSavedScore = () => {
+    try {
+      let highScore = JSON.parse(localStorage.getItem("app-high-score"));
+      // console.log(highScore);
+    } catch (error) {
+      console.log("error:", error);
+    }
   };
 
   // key sounds
