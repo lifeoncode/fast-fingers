@@ -14,8 +14,8 @@
 $beige-white: rgb(255, 248, 243);
 $white: #fafafa;
 $black: #242424;
-$very-dark-slategray: #0f1720;
-$red: rgb(254, 64, 12);
+$very-dark-slategray: #22252a;
+$red: #e85b51;
 $green: rgb(0, 182, 134);
 
 @mixin grid($columns: 1fr, $gap: 20px) {
@@ -31,6 +31,23 @@ $green: rgb(0, 182, 134);
   flex-direction: $direction;
 }
 
+footer {
+  text-align: center;
+  position: fixed;
+  bottom: 50px;
+  left: 0;
+  width: 100%;
+  text-transform: uppercase;
+  font-size: 8px;
+  opacity: 0.7;
+  letter-spacing: 2px;
+
+  a {
+    text-decoration: none;
+    color: $green;
+  }
+}
+
 body {
   transition: all 0.5s ease;
   height: 100vh;
@@ -38,6 +55,10 @@ body {
 
   &.light {
     background-color: $beige-white;
+
+    footer {
+      color: $black;
+    }
 
     // theme toggle
     .theme-toggle {
@@ -91,11 +112,19 @@ body {
         color: $black;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.086);
       }
+
+      .high-score {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.086);
+      }
     }
   }
 
   &.dark {
     background-color: $very-dark-slategray;
+
+    footer {
+      color: $beige-white;
+    }
 
     // theme toggle
     .theme-toggle {
@@ -171,6 +200,7 @@ body {
   font-size: 10px;
   text-transform: uppercase;
   opacity: 0.7;
+  letter-spacing: 2px;
 }
 
 header {
@@ -264,6 +294,9 @@ header {
     padding: 0 50px;
     font-size: 20px;
     line-height: 1.5;
+    letter-spacing: 1px;
+    word-spacing: 1px;
+    font-weight: 300;
 
     @media only screen and (max-width: 720px) {
       padding: 20px 10px;
@@ -337,8 +370,10 @@ header {
       border-radius: 20px;
       padding: 20px;
       font-size: 20px;
+      font-weight: 300;
+      letter-spacing: 1px;
       line-height: 1.6;
-      margin-bottom: 20px;
+      margin-bottom: 50px;
 
       span {
         color: $green;
@@ -354,9 +389,12 @@ header {
   // high score
   .high-score {
     @include flex($justify: space-between);
+    border-radius: 30px;
+    padding: 10px;
 
     .toggle {
       background-color: $very-dark-slategray;
+      box-shadow: 0 0 1px $beige-white;
       width: 60px;
       height: 26px;
       border-radius: 30px;
@@ -386,5 +424,10 @@ header {
         }
       }
     }
+  }
+
+  .keysound-toggle {
+    @extend .high-score;
+    margin-top: 30px;
   }
 }

@@ -10,6 +10,22 @@
   display: none;
 }
 
+footer {
+  text-align: center;
+  position: fixed;
+  bottom: 50px;
+  left: 0;
+  width: 100%;
+  text-transform: uppercase;
+  font-size: 8px;
+  opacity: 0.7;
+  letter-spacing: 2px;
+}
+footer a {
+  text-decoration: none;
+  color: rgb(0, 182, 134);
+}
+
 body {
   transition: all 0.5s ease;
   height: 100vh;
@@ -18,8 +34,11 @@ body {
 body.light {
   background-color: rgb(255, 248, 243);
 }
+body.light footer {
+  color: #242424;
+}
 body.light .theme-toggle {
-  background-color: #0f1720;
+  background-color: #22252a;
 }
 body.light .theme-toggle .toggle-btn {
   background-color: rgb(255, 248, 243);
@@ -48,22 +67,28 @@ body.light .settings-section h3 {
   color: #242424;
 }
 body.light .settings-section button {
-  background-color: #0f1720;
+  background-color: #22252a;
   color: rgb(255, 248, 243);
 }
 body.light .settings-section .level-info {
   color: #242424;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.086);
 }
+body.light .settings-section .high-score, body.light .settings-section .keysound-toggle {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.086);
+}
 body.dark {
-  background-color: #0f1720;
+  background-color: #22252a;
+}
+body.dark footer {
+  color: rgb(255, 248, 243);
 }
 body.dark .theme-toggle {
   background-color: rgb(255, 248, 243);
 }
 body.dark .theme-toggle .toggle-btn {
   margin-left: 26px;
-  background-color: #0f1720;
+  background-color: #22252a;
   color: rgb(255, 248, 243);
 }
 body.dark .settings-toggle {
@@ -115,6 +140,7 @@ body.dark .settings-section .level-info {
   font-size: 10px;
   text-transform: uppercase;
   opacity: 0.7;
+  letter-spacing: 2px;
 }
 
 header .container {
@@ -131,7 +157,7 @@ header .timer {
   margin-right: 50px;
 }
 header .timer.danger {
-  color: rgb(254, 64, 12);
+  color: #e85b51;
 }
 header .timer i {
   margin-right: 5px;
@@ -150,7 +176,7 @@ header .score span:nth-of-type(1) {
   background-color: rgb(0, 182, 134);
 }
 header .score span:nth-of-type(2) {
-  background-color: rgb(254, 64, 12);
+  background-color: #e85b51;
 }
 header nav {
   display: flex;
@@ -202,6 +228,9 @@ header nav .theme-toggle .toggle-btn {
   padding: 0 50px;
   font-size: 20px;
   line-height: 1.5;
+  letter-spacing: 1px;
+  word-spacing: 1px;
+  font-weight: 300;
 }
 @media only screen and (max-width: 720px) {
   .text-section .text {
@@ -213,7 +242,7 @@ header nav .theme-toggle .toggle-btn {
   text-decoration: none;
 }
 .text-section .text .wrong {
-  color: rgb(254, 64, 12);
+  color: #e85b51;
   text-decoration: underline;
 }
 
@@ -267,8 +296,10 @@ header nav .theme-toggle .toggle-btn {
   border-radius: 20px;
   padding: 20px;
   font-size: 20px;
+  font-weight: 300;
+  letter-spacing: 1px;
   line-height: 1.6;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 .settings-section .difficulty .level-info span {
   color: rgb(0, 182, 134);
@@ -277,14 +308,17 @@ header nav .theme-toggle .toggle-btn {
   display: inline-block;
   margin-bottom: 10px;
 }
-.settings-section .high-score {
+.settings-section .high-score, .settings-section .keysound-toggle {
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
+  border-radius: 30px;
+  padding: 10px;
 }
-.settings-section .high-score .toggle {
-  background-color: #0f1720;
+.settings-section .high-score .toggle, .settings-section .keysound-toggle .toggle {
+  background-color: #22252a;
+  box-shadow: 0 0 1px rgb(255, 248, 243);
   width: 60px;
   height: 26px;
   border-radius: 30px;
@@ -292,10 +326,10 @@ header nav .theme-toggle .toggle-btn {
   cursor: pointer;
   transition: all 0.3s ease;
 }
-.settings-section .high-score .toggle.on {
+.settings-section .high-score .toggle.on, .settings-section .keysound-toggle .toggle.on {
   background-color: rgb(0, 182, 134);
 }
-.settings-section .high-score .toggle-btn {
+.settings-section .high-score .toggle-btn, .settings-section .keysound-toggle .toggle-btn {
   background-color: rgb(255, 248, 243);
   position: absolute;
   top: 2px;
@@ -311,6 +345,9 @@ header nav .theme-toggle .toggle-btn {
   transition: all 0.3s ease;
   cursor: pointer;
 }
-.settings-section .high-score .toggle-btn.on {
+.settings-section .high-score .toggle-btn.on, .settings-section .keysound-toggle .toggle-btn.on {
   margin-left: 34px;
+}
+.settings-section .keysound-toggle {
+  margin-top: 30px;
 }/*# sourceMappingURL=style.css.map */
