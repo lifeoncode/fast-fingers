@@ -7,6 +7,7 @@ let min = 0;
 let sec = 0;
 
 const countDown = () => {
+  const ui = new UI();
   if (sec === 16 && min === 0) {
     document.querySelector("#timer").className = "timer danger";
   }
@@ -45,6 +46,9 @@ const setTimer = () => {
 
 const checkLevel = () => {
   let level = JSON.parse(localStorage.getItem("difficulty-level"));
+  document.querySelector(
+    "#current-level"
+  ).innerText = `current level: ${level}`;
   switch (level) {
     case "newbie":
       min = 6;

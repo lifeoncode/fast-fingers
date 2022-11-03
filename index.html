@@ -18,6 +18,12 @@
   </head>
   <body class="light">
     <audio src="./typewriter-short.wav" hidden></audio>
+
+    <!-- currently set level -->
+    <div class="container">
+      <span id="current-level"></span>
+    </div>
+
     <!-- header -->
     <header>
       <div class="container">
@@ -63,7 +69,10 @@
 
         <!-- high score -->
         <div class="high-score">
-          <h2>save high score</h2>
+          <h2>save high score <i class="lni lni-arrow-right"></i></h2>
+          <div class="toggle" id="toggle">
+            <div class="toggle-btn"><i class="fas fa-close"></i></div>
+          </div>
         </div>
       </div>
     </section>

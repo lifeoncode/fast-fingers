@@ -5,6 +5,7 @@ export class Settings {
     this.settingsBtn = document.querySelector("#settings-toggle");
     this.settings = document.querySelector("#settings");
     this.levelControls = this.settings.querySelectorAll("button");
+    this.saveScoreBtn = this.settings.querySelector(".high-score .toggle");
     this.ui = new UI();
   }
 
@@ -35,6 +36,7 @@ export class Settings {
 
   toggleEvent = () => {
     this.settingsBtn.addEventListener("click", this.displaySettings);
+    this.saveScoreBtn.addEventListener("click", this.saveHighScore);
   };
 
   displaySettings = () => {
@@ -61,5 +63,25 @@ export class Settings {
 
   displayLevelInfo = (info) => {
     this.settings.querySelector(".level-info").innerHTML = info;
+  };
+
+  // save high score
+  saveHighScore = () => {
+    this.saveScoreBtn.removeEventListener("click", this.saveHighScore);
+    this.saveScoreBtn.addEventListener("click", this.unsaveHighScore);
+    this.saveScoreBtn.classList.add("on");
+    this.saveScoreBtn.lastElementChild.classList.add("on");
+    this.saveScoreBtn.lastElementChild.innerHTML =
+      '<i class="fas fa-check"></i>';
+  };
+
+  // unsave high score
+  unsaveHighScore = () => {
+    this.saveScoreBtn.removeEventListener("click", this.unsaveHighScore);
+    this.saveScoreBtn.addEventListener("click", this.saveHighScore);
+    this.saveScoreBtn.classList.remove("on");
+    this.saveScoreBtn.lastElementChild.classList.remove("on");
+    this.saveScoreBtn.lastElementChild.innerHTML =
+      '<i class="fas fa-close"></i>';
   };
 }
