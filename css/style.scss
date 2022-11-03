@@ -199,6 +199,10 @@ header {
   height: 70vh;
   @include flex();
 
+  &.hide {
+    display: none;
+  }
+
   .text {
     padding: 0 50px;
     font-size: 20px;
@@ -222,6 +226,11 @@ header {
 
 .settings-section {
   padding: 50px 0;
+  display: none;
+
+  &.show {
+    display: block;
+  }
 
   h2,
   h3 {

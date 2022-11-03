@@ -150,6 +150,9 @@ header nav .theme-toggle .toggle-btn.dark {
   justify-content: center;
   flex-direction: row;
 }
+.text-section.hide {
+  display: none;
+}
 .text-section .text {
   padding: 0 50px;
   font-size: 20px;
@@ -171,6 +174,10 @@ header nav .theme-toggle .toggle-btn.dark {
 
 .settings-section {
   padding: 50px 0;
+  display: none;
+}
+.settings-section.show {
+  display: block;
 }
 .settings-section h2,
 .settings-section h3 {

@@ -15,9 +15,11 @@ export class UI {
   };
 
   generateText = async () => {
-    const res = await fetch("https://api.chucknorris.io/jokes/random");
+    const res = await fetch(
+      "https://jade-wicked-hummingbird.cyclic.app/random"
+    );
     const resData = await res.json();
-    let joke = resData.value.split("");
+    let joke = resData.message.split("");
 
     text.innerHTML = "";
     for (let char of joke) {

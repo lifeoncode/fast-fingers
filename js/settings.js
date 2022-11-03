@@ -33,7 +33,33 @@ export class Settings {
     }
   }
 
-  displayLevelInfo(info) {
+  toggleEvent = () => {
+    this.settingsBtn.addEventListener("click", this.displaySettings);
+  };
+
+  displaySettings = () => {
+    this.hideMainText();
+    this.settingsBtn.removeEventListener("click", this.displaySettings);
+    this.settingsBtn.addEventListener("click", this.hideSettings);
+    this.settings.classList.add("show");
+  };
+
+  hideSettings = () => {
+    this.settingsBtn.removeEventListener("click", this.hideSettings);
+    this.settingsBtn.addEventListener("click", this.displaySettings);
+    this.settings.classList.remove("show");
+    this.showMainText();
+  };
+
+  hideMainText = () => {
+    this.ui.textContainer.parentElement.classList.add("hide");
+  };
+
+  showMainText = () => {
+    this.ui.textContainer.parentElement.classList.remove("hide");
+  };
+
+  displayLevelInfo = (info) => {
     this.settings.querySelector(".level-info").innerHTML = info;
-  }
+  };
 }

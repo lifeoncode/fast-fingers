@@ -105,6 +105,7 @@ window.addEventListener("load", () => {
 
   // get settings
   const settings = new Settings();
+  settings.toggleEvent();
   for (let i of settings.levelControls) {
     if (i.id == JSON.parse(localStorage.getItem("difficulty-level"))) {
       setTimeout(() => {
