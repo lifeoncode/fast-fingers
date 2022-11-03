@@ -50,15 +50,13 @@ export class UI {
   // theme
   lightTheme() {
     this.body.className = "light";
-    this.themeToggle.className = "theme-toggle";
-    this.themeBtn.className = "toggle-btn";
+    localStorage.setItem("app-theme", JSON.stringify("light"));
     this.themeBtn.innerHTML = '<i class="lni lni-sun"></i>';
   }
 
   darkTheme() {
     this.body.className = "dark";
-    this.themeToggle.className = "theme-toggle dark";
-    this.themeBtn.className = "toggle-btn dark";
+    localStorage.setItem("app-theme", JSON.stringify("dark"));
     this.themeBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
   }
 }

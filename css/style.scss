@@ -39,6 +39,16 @@ body {
   &.light {
     background-color: $beige-white;
 
+    // theme toggle
+    .theme-toggle {
+      background-color: $very-dark-slategray;
+
+      .toggle-btn {
+        background-color: $beige-white;
+        color: $black;
+      }
+    }
+
     // settings
     .settings-toggle {
       color: $black;
@@ -86,6 +96,17 @@ body {
 
   &.dark {
     background-color: $very-dark-slategray;
+
+    // theme toggle
+    .theme-toggle {
+      background-color: $beige-white;
+
+      .toggle-btn {
+        margin-left: 26px;
+        background-color: $very-dark-slategray;
+        color: $beige-white;
+      }
+    }
 
     // settings
     .settings-toggle {
@@ -214,14 +235,9 @@ header {
       width: 50px;
       height: 25px;
       border-radius: 30px;
-      background-color: $very-dark-slategray;
       margin-right: 30px;
       position: relative;
-      transition: all 0.5s ease;
-
-      &.dark {
-        background-color: $beige-white;
-      }
+      transition: all 0.3s ease;
 
       .toggle-btn {
         position: absolute;
@@ -229,15 +245,8 @@ header {
         left: 2px;
         height: 20px;
         width: 20px;
-        background-color: $beige-white;
         @include flex();
-        transition: all 0.5s ease;
-
-        &.dark {
-          margin-left: 26px;
-          background-color: $very-dark-slategray;
-          color: $beige-white;
-        }
+        transition: all 0.3s ease;
       }
     }
   }
@@ -353,7 +362,7 @@ header {
       border-radius: 30px;
       position: relative;
       cursor: pointer;
-      transition: all 0.5s ease;
+      transition: all 0.3s ease;
 
       &.on {
         background-color: $green;
@@ -369,7 +378,7 @@ header {
         border: 0;
         height: 22px;
         width: 22px;
-        transition: all 0.5s ease;
+        transition: all 0.3s ease;
         cursor: pointer;
 
         &.on {

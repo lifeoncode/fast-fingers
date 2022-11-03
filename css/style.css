@@ -18,6 +18,13 @@ body {
 body.light {
   background-color: rgb(255, 248, 243);
 }
+body.light .theme-toggle {
+  background-color: #0f1720;
+}
+body.light .theme-toggle .toggle-btn {
+  background-color: rgb(255, 248, 243);
+  color: #242424;
+}
 body.light .settings-toggle {
   color: #242424;
 }
@@ -50,6 +57,14 @@ body.light .settings-section .level-info {
 }
 body.dark {
   background-color: #0f1720;
+}
+body.dark .theme-toggle {
+  background-color: rgb(255, 248, 243);
+}
+body.dark .theme-toggle .toggle-btn {
+  margin-left: 26px;
+  background-color: #0f1720;
+  color: rgb(255, 248, 243);
 }
 body.dark .settings-toggle {
   color: rgb(255, 248, 243);
@@ -156,13 +171,9 @@ header nav .theme-toggle {
   width: 50px;
   height: 25px;
   border-radius: 30px;
-  background-color: #0f1720;
   margin-right: 30px;
   position: relative;
-  transition: all 0.5s ease;
-}
-header nav .theme-toggle.dark {
-  background-color: rgb(255, 248, 243);
+  transition: all 0.3s ease;
 }
 header nav .theme-toggle .toggle-btn {
   position: absolute;
@@ -170,17 +181,11 @@ header nav .theme-toggle .toggle-btn {
   left: 2px;
   height: 20px;
   width: 20px;
-  background-color: rgb(255, 248, 243);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  transition: all 0.5s ease;
-}
-header nav .theme-toggle .toggle-btn.dark {
-  margin-left: 26px;
-  background-color: #0f1720;
-  color: rgb(255, 248, 243);
+  transition: all 0.3s ease;
 }
 
 .text-section {
@@ -285,7 +290,7 @@ header nav .theme-toggle .toggle-btn.dark {
   border-radius: 30px;
   position: relative;
   cursor: pointer;
-  transition: all 0.5s ease;
+  transition: all 0.3s ease;
 }
 .settings-section .high-score .toggle.on {
   background-color: rgb(0, 182, 134);
@@ -303,7 +308,7 @@ header nav .theme-toggle .toggle-btn.dark {
   border: 0;
   height: 22px;
   width: 22px;
-  transition: all 0.5s ease;
+  transition: all 0.3s ease;
   cursor: pointer;
 }
 .settings-section .high-score .toggle-btn.on {

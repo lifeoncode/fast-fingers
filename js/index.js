@@ -122,11 +122,8 @@ window.addEventListener("load", () => {
   const app = new App();
   app.events();
 
-  //   instatiate UI
+  //  instatiate UI
   const ui = new UI();
-  ui.generateText();
-  ui.updateScore();
-
   // theme
   let dark = false;
   ui.themeToggle.addEventListener("click", () => {
@@ -138,6 +135,16 @@ window.addEventListener("load", () => {
       ui.lightTheme();
     }
   });
+
+  // set theme from history
+  if (JSON.parse(localStorage.getItem("app-theme")) === "dark") {
+    ui.darkTheme();
+    dark = true;
+  }
+  // generate text
+  ui.generateText();
+  // attach events
+  ui.updateScore();
 
   // settings
   settings.levelControls.forEach((btn) => {
