@@ -151,10 +151,25 @@ header .container {
   justify-content: space-between;
   flex-direction: row;
 }
+@media only screen and (max-width: 500px) {
+  header .container {
+    font-size: 14px;
+  }
+}
+@media only screen and (max-width: 360px) {
+  header .container {
+    padding: 4px;
+  }
+}
 header .timer {
   border-radius: 30px;
   padding: 4px 6px;
   margin-right: 50px;
+}
+@media only screen and (max-width: 400px) {
+  header .timer {
+    margin-right: 20px;
+  }
 }
 header .timer.danger {
   color: #e85b51;
@@ -174,6 +189,11 @@ header .score span i {
 header .score span:nth-of-type(1) {
   margin-right: 10px;
   background-color: rgb(0, 182, 134);
+}
+@media only screen and (max-width: 400px) {
+  header .score span:nth-of-type(1) {
+    margin-right: 5px;
+  }
 }
 header .score span:nth-of-type(2) {
   background-color: #e85b51;
@@ -200,6 +220,11 @@ header nav .theme-toggle {
   margin-right: 30px;
   position: relative;
   transition: all 0.3s ease;
+}
+@media only screen and (max-width: 400px) {
+  header nav .theme-toggle {
+    margin-right: 10px;
+  }
 }
 header nav .theme-toggle .toggle-btn {
   position: absolute;
@@ -232,6 +257,11 @@ header nav .theme-toggle .toggle-btn {
   word-spacing: 1px;
   font-weight: 300;
 }
+@media only screen and (max-width: 500px) {
+  .text-section .text {
+    font-size: 16px;
+  }
+}
 @media only screen and (max-width: 720px) {
   .text-section .text {
     padding: 20px 10px;
@@ -263,6 +293,16 @@ header nav .theme-toggle .toggle-btn {
   display: inline-block;
   margin-left: 10px;
 }
+@media only screen and (max-width: 500px) {
+  .settings-section h2 {
+    font-size: 20px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .settings-section h3 {
+    font-size: 18px;
+  }
+}
 .settings-section .difficulty-nav {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -276,6 +316,12 @@ header nav .theme-toggle .toggle-btn {
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.3s ease;
+}
+@media only screen and (max-width: 500px) {
+  .settings-section .difficulty-nav button {
+    padding: 8px;
+    font-size: 13px;
+  }
 }
 .settings-section .difficulty-nav button:hover {
   transform: scale(0.95);
@@ -300,6 +346,11 @@ header nav .theme-toggle .toggle-btn {
   letter-spacing: 1px;
   line-height: 1.6;
   margin-bottom: 50px;
+}
+@media only screen and (max-width: 500px) {
+  .settings-section .difficulty .level-info {
+    font-size: 16px;
+  }
 }
 .settings-section .difficulty .level-info span {
   color: rgb(0, 182, 134);
