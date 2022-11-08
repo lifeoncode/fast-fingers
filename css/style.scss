@@ -78,6 +78,18 @@ body {
     .text {
       color: $black;
     }
+    .score-display {
+      h3,
+      span {
+        color: $very-dark-slategray;
+      }
+
+      button {
+        background-color: $very-dark-slategray;
+        color: $beige-white;
+      }
+    }
+
     // timer
     .timer {
       color: $black;
@@ -155,6 +167,17 @@ body {
     // type text
     .text {
       color: $beige-white;
+    }
+    .score-display {
+      h3,
+      span {
+        color: $beige-white;
+      }
+
+      button {
+        background-color: $beige-white;
+        color: $very-dark-slategray;
+      }
     }
     // timer
     .timer {
@@ -330,6 +353,45 @@ header {
 
   &.hide {
     display: none;
+  }
+
+  .score-display {
+    text-align: center;
+    text-transform: uppercase;
+
+    h3 {
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    span {
+      display: inline-block;
+      margin: 0 20px;
+      padding: 10px;
+    }
+
+    button {
+      padding: 10px 30px;
+      text-transform: uppercase;
+      font-size: 14px;
+      border-radius: 30px;
+      border: 0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .fa-check {
+      background-color: $green;
+      color: $beige-white;
+      border-radius: 50%;
+      padding: 2px;
+    }
+
+    .fa-close {
+      @extend .fa-check;
+      background-color: $red;
+      padding: 2px 4px;
+    }
   }
 
   .text {

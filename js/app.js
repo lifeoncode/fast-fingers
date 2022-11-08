@@ -47,6 +47,20 @@ export class UI {
     }
   };
 
+  displayScore = () => {
+    let score = JSON.parse(localStorage.getItem("app-high-score"));
+    let scoreOutput = `
+    <div class="score-display">
+      <h3>your time's up...<br>you scored:</h3>
+      <span><i class="fas fa-check"></i> ${score[0]} correct</span>
+      <span><i class="fas fa-close"></i> ${score[1]} incorrect</span>
+      <br><br>
+      <button id="ok">ok</button>
+    </div>
+    `;
+    this.textContainer.parentElement.innerHTML = scoreOutput;
+  };
+
   // theme
   lightTheme() {
     this.body.className = "light";

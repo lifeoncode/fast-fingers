@@ -50,6 +50,14 @@ body.light .settings-toggle {
 body.light .text {
   color: #242424;
 }
+body.light .score-display h3,
+body.light .score-display span {
+  color: #22252a;
+}
+body.light .score-display button {
+  background-color: #22252a;
+  color: rgb(255, 248, 243);
+}
 body.light .timer {
   color: #242424;
 }
@@ -105,6 +113,14 @@ body.dark .settings-toggle {
 }
 body.dark .text {
   color: rgb(255, 248, 243);
+}
+body.dark .score-display h3,
+body.dark .score-display span {
+  color: rgb(255, 248, 243);
+}
+body.dark .score-display button {
+  background-color: rgb(255, 248, 243);
+  color: #22252a;
 }
 body.dark .timer {
   color: rgb(255, 248, 243);
@@ -266,6 +282,38 @@ header nav .theme-toggle .toggle-btn {
 }
 .text-section.hide {
   display: none;
+}
+.text-section .score-display {
+  text-align: center;
+  text-transform: uppercase;
+}
+.text-section .score-display h3 {
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+.text-section .score-display span {
+  display: inline-block;
+  margin: 0 20px;
+  padding: 10px;
+}
+.text-section .score-display button {
+  padding: 10px 30px;
+  text-transform: uppercase;
+  font-size: 14px;
+  border-radius: 30px;
+  border: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.text-section .score-display .fa-check, .text-section .score-display .fa-close {
+  background-color: rgb(0, 182, 134);
+  color: rgb(255, 248, 243);
+  border-radius: 50%;
+  padding: 2px;
+}
+.text-section .score-display .fa-close {
+  background-color: #e85b51;
+  padding: 2px 4px;
 }
 .text-section .text {
   padding: 0 50px;

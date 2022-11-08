@@ -15,8 +15,10 @@ const countDown = () => {
   if (sec > 0) {
     sec--;
   } else if (sec === 0 && min === 0) {
-    alert("TIME'S UP!!");
-    window.location.reload();
+    ui.displayScore();
+    document.querySelector("#ok").addEventListener("click", () => {
+      window.location.reload();
+    });
     timerRunning = false;
   } else if (sec === 0 && min > 0) {
     min--;
