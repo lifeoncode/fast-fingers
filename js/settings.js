@@ -4,6 +4,7 @@ export class Settings {
   constructor() {
     this.settingsBtn = document.querySelector("#settings-toggle");
     this.settings = document.querySelector("#settings");
+    this.backBtn = this.settings.querySelector("#back");
     this.levelControls = this.settings.querySelectorAll("button");
     this.saveScoreBtn = this.settings.querySelector(".high-score .toggle");
     this.soundBtn = this.settings.querySelector(".keysound-toggle .toggle");
@@ -39,6 +40,7 @@ export class Settings {
 
   toggleEvent = () => {
     this.settingsBtn.addEventListener("click", this.displaySettings);
+    this.backBtn.addEventListener("click", this.hideSettings);
     this.saveScoreBtn.addEventListener("click", this.toggleSaveScore);
     this.soundBtn.addEventListener("click", this.toggleSound);
   };

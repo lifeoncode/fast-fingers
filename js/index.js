@@ -15,7 +15,8 @@ const countDown = () => {
   if (sec > 0) {
     sec--;
   } else if (sec === 0 && min === 0) {
-    alert("GAME OVER!!");
+    alert("TIME'S UP!!");
+    window.location.reload();
     timerRunning = false;
   } else if (sec === 0 && min > 0) {
     min--;
@@ -118,6 +119,20 @@ window.addEventListener("load", () => {
       setTimeout(() => {
         i.click();
       }, 200);
+    }
+  }
+
+  // set level to newbie if level is not found
+  for (let i of settings.levelControls) {
+    if (
+      localStorage.getItem("difficulty-level") === null ||
+      localStorage.getItem("difficulty-level") === undefined
+    ) {
+      if (i.id === "newbie") {
+        setTimeout(() => {
+          i.click();
+        }, 200);
+      }
     }
   }
 
